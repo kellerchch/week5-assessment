@@ -9,57 +9,30 @@ class App extends Component {
     super(props)
     this.state = {
       toDos: '',
-      toDoToAdd: new Asset(null, '', 0, ''),
+      toDoToAdd: new toDo(null, '', 0, ''),
       selectedtoDo: {
         name: '',
       }
     }
   }
 
-  selecttoDo(todo) {
-    this.setState({ selectedtoDo: toDo });
-  
-  }
-
-  toDoEdit (e)  {
+gettoDo = () => {
+  axios.push(`http://localhost:3000/toDo`).then((response) => {
     this.setState({
-      toDos: e.target.value
+      toDo: response.toDo
     })
-  }
 
-
-  submitToDo () {
-    let copy = this.state.toDos.slice()
-    copy.push(this.state.toDoToAdd)
-    this.setState({ toDos: copy });
+  })
 }
 
-  handleSubmit(e) {
-    let copy = this.state.toDoToAdd;
-    copy[e.target.name] = e.target.value;
-    copy.id = this.state.toDos.length;
-    this.setState({ toDoToAdd: copy });
-  }
-
-  submittoDo = (e) => {
-    this.setState({
-      jokeName: e.target.value
-    })
-  }
-
-  submittoDoRequest = () => {
-    axios.get(`http://localhost:3000/toDo`).then((response) => {
+  submittoDo = () => {
+    axios.push(`http://localhost:3000/toDo`).then((response) => {
       this.setState({
         toDo: response.toDo
       })
 
     })
   }
-
-  submittoDo = () => {
-    var toDo = {
-      toDo: this.state.toDo
-    }
 
   render() {
     return (
@@ -90,8 +63,8 @@ class App extends Component {
                   <label>
                   <input type="checkbox" />
                   </label>
-                    <AssetList assets={this.state.toDos} selectAsset={ this.selecttoDo } />
-                    <AssetEditor selected={this.state.selectedtoDo} 
+                    <toDoList assets={this.state.toDos} selectAsset={ this.selecttoDo } />
+                    <toDoEditor selected={this.state.selectedtoDo} 
                     refreshList={ this.refresh } />
 
                   <button className="button" onClick={this.toDoEdit }>edit</button>
