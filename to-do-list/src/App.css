@@ -9,8 +9,8 @@
 
 .App-header {
   background-color: #222;
-  height: 150px;
-  padding: 20px;
+  height: 50px;
+  padding: 10px;
   color: white;
 }
 
@@ -20,6 +20,42 @@
 
 .App-intro {
   font-size: large;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.todo-input {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.todo-output {
+  margin: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 405px;
+  border-radius: 2px;
+  background-color: #ffffff;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+  margin: 10px 0px;
+  padding: 5px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.todo-output button {
+margin: 15px;
+}
+
+.button {
+  margin-right: 10px;
 }
 
 @keyframes App-logo-spin {
